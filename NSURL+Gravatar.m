@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Bart van Zon. All rights reserved.
 //
 
-@import CommonCrypto;
+#import <CommonCrypto/CommonDigest.h>
 
 #import "NSURL+Gravatar.h"
 
