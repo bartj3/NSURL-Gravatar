@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Bart van Zon. All rights reserved.
 //
 
-@import CommonCrypto;
-
 #import "NSURL+Gravatar.h"
+
+#import <CommonCrypto/CommonDigest.h>
 
 
 
@@ -35,4 +35,5 @@
     
     return [MD5StringOutput copy];
 }
+
 @end

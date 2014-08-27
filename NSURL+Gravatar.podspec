@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NSURL+Gravatar"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "NSURL+Gravatar is a NSURL category to generate Gravatar URLs."
   s.description  = <<-DESC
 NSURL+Gravatar
@@ -18,6 +18,7 @@ NSURL+Gravatar is a `NSURL` category to generate Gravatar URLs.
   s.homepage     = "http://github.com/bartj3/nsurl-gravatar"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Bart van Zon" => "bartvanzon@gmail.com" }
-  s.source       = { :git => "https://github.com/bartj3/NSURL-Gravatar.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/bartj3/NSURL-Gravatar.git", :tag => "1.0.1" }
   s.source_files = 'NSURL+Gravatar.h', 'NSURL+Gravatar.m'
+  s.requires_arc = true
 end
