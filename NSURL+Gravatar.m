@@ -14,7 +14,7 @@
 
 @implementation NSURL (Gravatar)
 
-+(NSURL *)URLWithGravatarEmail:(NSString *)email size:(int)size
++ (NSURL *)URLWithGravatarEmail:(NSString *)email size:(int)size
 {
     NSString *hashedEmail = [self MD5:[email lowercaseString]];
     NSString *gravatarURLString = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%@?d=404&size=%d", hashedEmail, size];
