@@ -13,22 +13,21 @@
 
 +(NSURL *)URLWithGravatarEmail:(NSString *)email size:(int)size
 {
-    NSString *hashedEmail = [self MD5: [email lowercaseString]];
+    NSString *hashedEmail = [self MD5:[email lowercaseString]];
     NSString *gravatarURLString = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%@?d=404&size=%d", hashedEmail, size];
     return [NSURL URLWithString:gravatarURLString];
 }
 
-+ (NSString*)MD5:(NSString *)string
++ (NSString *)MD5:(NSString *)string
 {
     const char *pointer = [string UTF8String];
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(pointer, strlen(pointer), md5Buffer);
+    CC_MD5(pointer, (CC_LONG)[string lengthOfBytesUsingEncoding:NSUTF8StringEncoding], md5Buffer);
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-        [output appendFormat:@"%02x",md5Buffer[i]];
+        [output appendFormat:@"%02x", md5Buffer[i]];
     }
     
-    return output;
+    return [output copy];
 }
-
 @end
