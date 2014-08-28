@@ -6,11 +6,8 @@
 //  Copyright (c) 2014 Bart van Zon. All rights reserved.
 //
 
-@import CommonCrypto;
-
 #import "NSURL+Gravatar.h"
-
-
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSURL (Gravatar)
 
@@ -32,7 +29,8 @@
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
         [MD5StringOutput appendFormat:@"%02x", MD5ByteBuffer[i]];
     }
-    
+
     return [MD5StringOutput copy];
 }
+
 @end
