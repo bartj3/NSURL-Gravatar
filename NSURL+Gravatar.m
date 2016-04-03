@@ -94,17 +94,20 @@ static NSString * NSStringFromGravatarImageType(kGravatarDefaultImageType type) 
  *
  *  @return an MD5 representation of the provided string
  */
-+ (NSString*)MD5:(NSString *)string {
-    
-    const char *pointer = [string UTF8String];
-    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(pointer, strlen(pointer), md5Buffer);
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
++ (NSString *)MD5:(NSString *)string
+{
+    const char *stringPointer = [string UTF8String];
+    CC_LONG stringLength = (CC_LONG)[string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+
+    unsigned char MD5ByteBuffer[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(stringPointer, stringLength, MD5ByteBuffer);
+    NSMutableString *MD5StringOutput = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH];
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-        [output appendFormat:@"%02x",md5Buffer[i]];
+        [MD5StringOutput appendFormat:@"%02x", MD5ByteBuffer[i]];
     }
-    
-    return output;
+
+    return [MD5StringOutput copy];
 }
+
 
 @end
